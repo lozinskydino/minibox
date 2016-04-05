@@ -1,0 +1,46 @@
+
+	<div ng-repeat="f in forms" ng-switch="f.type">
+		
+		<div class="form-group filled" ng-switch-when="title">
+            <label class="control-label">{{f.label}}</label>
+            <input type="text" class="form-control" ng-model='item[f.model]' required>
+        </div>
+
+        <div class="form-group filled" ng-switch-when="content">
+              <label for="textArea" class="control-label">{{f.label}}</label>
+              <textarea class="form-control vertical ng-touched" rows="3" ng-model='item[f.model]' id="textArea"></textarea>
+        </div>
+
+        <div class="form-group filled" ng-switch-when="select">
+          <label class="control-label">{{f.label}}</label>
+          <select class="form-control filled" ng-model='item[f.model]'>
+          	<option value="">Selecione...</option>
+          	<option ng-repeat="(key,value) in f.options" value="{{value.value}}" ng-selected="value.value == item[f.model]">{{value.label}}</option>
+          </select>
+        </div>
+
+        <div class="form-group" ng-switch-when="checkbox">
+          <div class="checkbox" ng-repeat="(key, value) in f.options">
+            <label>
+              <input type="checkbox" ng-model='item[f.model][value.value]' ng-checked="item[f.model][value.value] == true"> {{value.label}}
+            </label>
+          </div>
+
+        </div>
+
+        <div class="form-group" ng-switch-when="radio">
+          <div class="radio-inline" ng-repeat="(key, value) in f.options">
+            <label>
+              <input type="radio" name="optionsRadios" id="optionsRadios1" ng-model='item[f.model][value.value]' value="{{value.value}}" checked="">
+              {{value.label}}
+            </label>
+          </div>
+        </div>
+
+        <div class="form-group" ng-switch-when="date">
+          <label class="control-label">{{f.label}}</label>
+          <input type="text" class="form-control" ng-model="item[f.model]" data-autoclose="1"
+                 bs-datepicker>
+        </div>
+
+	</div>
