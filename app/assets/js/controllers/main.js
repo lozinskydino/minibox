@@ -2,6 +2,52 @@ app.controller('MainController',
   ['$scope', '$animate', 'localStorageService', 'todoService', '$alert', '$timeout',
   function($scope, $animate, localStorageService, todoService, $alert, $timeout){
 
+  $scope.user = {
+    name: 'Dino Lozinsky',
+    email: 'adso@recifesites.com',
+  };
+
+  $scope.menu = [
+    {
+      type: 'single',
+      label: 'Serviços',
+      link: '#/servicos'
+    },
+    {
+      type: 'single',
+      label: 'Alunos',
+      link: '#/aluno'
+    },
+    {
+      type: 'multiply',
+      label: "Produtos",
+      menu: [
+        {
+          label: 'Produtos',
+          link: '#/produto'
+        },
+        {
+          label: 'Categorias',
+          link: '#/categoria'
+        }
+      ]
+    },
+    {
+      type: 'multiply',
+      label: "Portfólio",
+      menu: [
+        {
+          label: 'Produtos',
+          link: '#/produto'
+        },
+        {
+          label: 'Categorias',
+          link: '#/categoria'
+        }
+      ]
+    }
+  ];
+
   if (typeof(browser_old) == "undefined"){
     initRipplesWithArrive();
 
@@ -52,15 +98,15 @@ app.controller('MainController',
   }
   localStorageService.bind($scope, 'theme');
 
-  var introductionAlert = $alert({
-    title: 'Welcome to Materialism',
-    content: 'Stay a while and listen',
-    placement: 'top',
-    type: 'theme',
-    show: false,
-    template: 'assets/tpl/partials/alert-introduction.html',
-    animation: 'mat-grow-top-right'
-  });
+  // var introductionAlert = $alert({
+  //   title: 'Welcome to Materialism',
+  //   content: 'Stay a while and listen',
+  //   placement: 'top',
+  //   type: 'theme',
+  //   show: false,
+  //   template: 'assets/tpl/partials/alert-introduction.html',
+  //   animation: 'mat-grow-top-right'
+  // });
 
   if(!localStorageService.get('alert-introduction')) {
     $timeout(function(){

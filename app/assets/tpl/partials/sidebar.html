@@ -10,25 +10,39 @@
   </div>
   <div class="user-logged-in">
     <div class="content">
-      <div class="user-name">Katsumoto <span class="text-muted f9">admin</span></div>
-      <div class="user-email">last@samurai.jp</div>
+      <div class="user-name">{{user.name}} <span class="text-muted f9">admin</span></div>
+      <div class="user-email">{{user.email}}</div>
       <div class="user-actions">
         <a class="m-r-5" href="">settings</a> <a href="">logout</a>
       </div>
     </div>
   </div>
   <ul ng-cloak>
-    <a menu-link href="#/dashboard" icon="md md-blur-on">Dashboard</a>
-    <li menu-toggle path="/apps" name="APPS" icon="md md-camera">
-      <a menu-link href="#/apps/todo" name="Todo">
-        <span id="todosCount" class="pull-right badge z-depth-0" ng-bind="todosCount"></span>
-        Todo
-      </a>
-      <a menu-link href="#/apps/crud" name="Crud">
-        <span class="pull-right badge theme-primary-bg z-depth-0">9</span>
-        Crud
-      </a>
-    </li>
+    <div ng-repeat="m in menu" ng-switch="m.type">
+
+      <div ng-switch-when="single">
+          <a menu-link href="{{m.link}}" name="{{m.label}}" icon="md md-keyboard-arrow-right">{{m.label}}</a>
+      </div>
+
+      <div ng-switch-when="multiply">
+        <li menu-toggle name="{{m.label}}" icon="md md-add-circle-outline">
+          <a ng-repeat="sub in m.menu" name="{{sub.label}}" menu-link href="{{sub.link}}">{{sub.label}}</a>
+        </li>
+      </div>
+
+    </div>
+    <div>
+      <li menu-toggle name="APPS" icon="md md-camera">
+        <a menu-link href="#/apps/todo" name="Todo">
+          <span id="todosCount" class="pull-right badge z-depth-0" ng-bind="todosCount"></span>
+          Todo
+        </a>
+        <a menu-link href="#/apps/crud" name="Crud">
+          <span class="pull-right badge theme-primary-bg z-depth-0">9</span>
+          Crud
+        </a>
+      </li>
+    </div>
     <li menu-toggle path="/ui-elements" name="UI elements" icon="md md-photo">
       <a menu-link href="#/ui-elements/cards">Cards</a>
       <a menu-link href="#/ui-elements/colors">Color</a>

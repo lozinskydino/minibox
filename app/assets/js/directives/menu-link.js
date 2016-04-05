@@ -10,6 +10,7 @@ app.directive('menuLink', function() {
     },
     templateUrl: 'assets/tpl/directives/menu-link.html',
     controller: ['$element', '$location', '$rootScope', function($element, $location, $rootScope) {
+      
       this.getName = function(name) {
         if ( name !== undefined ) {
           return name;
@@ -17,7 +18,6 @@ app.directive('menuLink', function() {
           return $element.find('a').text().trim();
         }
       };
-
       this.setBreadcrumb = function(name) {
         $rootScope.pageTitle = this.getName(name);
       };
@@ -25,6 +25,7 @@ app.directive('menuLink', function() {
       this.isSelected = function(href) {
         return $location.path() == href.slice(1, href.length);
       };
+      
     }],
     link: function(scope, element, attrs, linkCtrl) {
       icon = attrs.icon;

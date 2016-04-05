@@ -1,4 +1,6 @@
-app.controller('CrudController', ['$scope', '$window', '$aside', '$http', 'PlaceholderTextService', function($scope, $window, $aside, $http, PlaceholderTextService){
+app.controller('CrudController', ['$scope', '$window', '$aside', '$http', '$rootScope', 'PlaceholderTextService', function($scope, $window, $aside, $rootScope, $http, PlaceholderTextService){
+
+  $rootScope.pageTitle = "Aluno";
 
   // settings
   $scope.settings = {
