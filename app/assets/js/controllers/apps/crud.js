@@ -12,6 +12,7 @@ app.controller('CrudController', ['$scope', '$window', '$aside', '$http', '$root
   // making forms
 
   $scope.item = {};
+  $scope.item.obj = {src:"", selection: [], thumbnail: true};
 
   $scope.categorias = [
       {
@@ -81,6 +82,12 @@ app.controller('CrudController', ['$scope', '$window', '$aside', '$http', '$root
         type: 'title',
         label: 'Nome',
         model: 'firstname',
+        foto: 'foto'
+      },
+      {
+        type: 'file',
+        label: 'Selecione uma foto',
+        model: 'files',
         foto: 'foto'
       },
       {

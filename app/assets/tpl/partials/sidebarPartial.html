@@ -1,0 +1,13 @@
+<div ng-repeat="m in menu" ng-switch="m.type">
+
+  <div ng-switch-when="single">
+      <a menu-link href="{{m.link}}" name="{{m.label}}" icon="md md-keyboard-arrow-right">{{m.label}}</a>
+  </div>
+
+  <div ng-switch-when="multiply">
+    <li menu-toggle name="{{m.label}}" icon="md md-add-circle-outline">
+      <a ng-repeat="sub in m.menu" name="{{sub.label}}" menu-link href="{{sub.link}}">{{sub.label}}</a>
+    </li>
+  </div>
+
+</div>

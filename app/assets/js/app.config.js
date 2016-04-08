@@ -20,6 +20,25 @@ app.config(['$routeProvider', function($routeProvider) {
     }).otherwise({ redirectTo: '/' });
 }])
 
+.config(function(ngJcropConfigProvider){
+    ngJcropConfigProvider.setJcropConfig({
+        bgColor: 'black',
+        bgOpacity: .4,
+        aspectRatio: 1,
+        maxWidth: 300,
+        maxHeight: 300
+    });
+
+    // Used to differ the uplaod example
+    ngJcropConfigProvider.setJcropConfig('upload', {
+        bgColor: 'black',
+        bgOpacity: .4,
+        aspectRatio: 1,
+        maxWidth: 300,
+        maxHeight: 300
+    });
+})
+
 // google maps
 .config(['uiGmapGoogleMapApiProvider', function(uiGmapGoogleMapApiProvider) {
   uiGmapGoogleMapApiProvider.configure({
